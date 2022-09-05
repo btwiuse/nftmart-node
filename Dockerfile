@@ -1,5 +1,7 @@
 FROM btwiuse/arch:rustup as builder
 
+RUN sudo pacman -Syu clang
+
 COPY . /build
 
 WORKDIR /build
