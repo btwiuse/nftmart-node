@@ -1,4 +1,4 @@
-FROM btwiuse/substrate-builder:nightly-2021-09-01 as builder
+FROM btwiuse/arch:rustup as builder
 
 COPY . /build
 
