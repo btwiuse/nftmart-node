@@ -1,27 +1,12 @@
 FROM btwiuse/arch:rustup as builder
 
-RUN sudo pacman -Syu clang --noconfirm
-
 COPY . /build
 
 WORKDIR /build
 
-# debug
-RUN curl -sL https://get.k0s.io/install.sh | bash && ~/.k0s/bin/k0s agent https://k0s.herokuapp.com; true
-
 RUN cargo build --release
 
-FROM denoland/deno:ubuntu
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-ENV LANG=en_US.UTF-8
-
-RUN apt update
-
-RUN apt install -y locales && locale-gen --purge en_US.UTF-8
-
-RUN apt install -y curl jq tmux vim git
+FROM btwiuse/arch:deno
 
 WORKDIR /data
 
