@@ -1,6 +1,6 @@
 FROM btwiuse/arch:rustup as builder
 
-RUN sudo pacman -Syu clang
+RUN sudo pacman -Syu clang --noconfirm
 
 COPY . /build
 
