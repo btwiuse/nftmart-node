@@ -1,6 +1,6 @@
 FROM btwiuse/arch:golang as portmux
 
-RUN GOBIN=/usr/local/bin/ go install -v github.com/btwiuse/portmux@latest
+RUN GOBIN=/usr/local/bin/ go install -v github.com/btwiuse/portmux@v0.0.1
 
 FROM btwiuse/arch:rustup as builder
 
@@ -34,5 +34,6 @@ COPY --from=portmux /usr/local/bin/portmux /usr/bin/portmux
 
 ENV PORTMUX_HTTP 127.0.0.1:9933
 ENV PORTMUX_WS 127.0.0.1:9944
+ENV PORTMUX_UI https://redirect.subshell.xyz
 
 ENTRYPOINT ["nftmart-node"]
